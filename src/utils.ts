@@ -83,7 +83,7 @@ export function parseConfigFile(configPath: string): any {
   try {
     const absPath = path.resolve(configPath);
     if (/\.ya?ml$/i.test(absPath)) {
-      return YAML.safeLoad(fs.readFileSync(absPath, 'utf8'));
+      return YAML.load(fs.readFileSync(absPath, 'utf8'));
     }
     return require(absPath);
   } catch (err) {

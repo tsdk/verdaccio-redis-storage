@@ -38,7 +38,7 @@ program
   .command('dump <dir>')
   .description('dump Redis storage to dir')
   .option('--no-tarball', 'ignore tarball files')
-  .option('--dbname', 'database filename (default: .verdaccio-db.json)')
+  .option('--dbname <dbname>', 'database filename (default: .verdaccio-db.json)')
   .action(async function (dir: string, cmd: Command) {
     const opts = {...program.opts(), ...cmd};
     await runCommand(async () => {
@@ -50,7 +50,7 @@ program
   .command('restore <dir>')
   .description('restore Redis storage from dir')
   .option('--no-tarball', 'ignore tarball files')
-  .option('--dbname', 'database filename (default: .verdaccio-db.json)')
+  .option('--dbname <dbname>', 'database filename (default: .verdaccio-db.json)')
   .option('--scan', 'scan package.json to fill database')
   .action(async function (dir: string, cmd: Command) {
     const opts = {...program.opts(), ...cmd};

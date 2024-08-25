@@ -40,7 +40,7 @@ program
   .option('--no-tarball', 'ignore tarball files')
   .option('--dbname', 'database filename (default: .verdaccio-db.json)')
   .action(async function (dir: string, cmd: Command) {
-    const opts = program.opts();
+    const opts = {...program.opts(), ...cmd};
     await runCommand(async () => {
       await dump(dir, opts);
     });
@@ -53,8 +53,9 @@ program
   .option('--dbname', 'database filename (default: .verdaccio-db.json)')
   .option('--scan', 'scan package.json to fill database')
   .action(async function (dir: string, cmd: Command) {
+    const opts = {...program.opts(), ...cmd};
     await runCommand(async () => {
-      await restore(dir, cmd);
+      await restore(dir, opts);
     });
   });
 

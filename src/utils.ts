@@ -68,7 +68,7 @@ export const PACKAGE_JSON_FILE = 'package.json';
 export function wrapError(err: unknown): VerdaccioError {
   const obj = err as any;
   if ('code' in obj && 'message' in obj)
-    return err;
+    return err as VerdaccioError;
   else if ('message' in obj)
     return getInternalError((obj as Error).message);
   else
@@ -87,7 +87,7 @@ export function parseConfigFile(configPath: string): any {
     }
     return require(absPath);
   } catch (err) {
-    const error = wrapError(err);
+    const error = wrapError(err) as any;
     if (error.code !== 'MODULE_NOT_FOUND') {
       error.message = 'failed to load verdaccio configuration file.';
     }

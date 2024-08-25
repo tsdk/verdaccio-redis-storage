@@ -1,6 +1,6 @@
 {
-  "name": "verdaccio-redis-storage",
-  "version": "1.2.4",
+  "name": "@heytap/verdaccio-redis-storage",
+  "version": "1.2.5",
   "description": "A Redis based storage plugin for Verdaccio.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
